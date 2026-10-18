@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  /* Latar belakang biru laut yang sangat lembut */
+  background-color: #f0f8ff; 
+  color: #2c3e50;
+}
+
+app-bar {
+  display: block;
+  /* Biru laut pekat untuk header */
+  background-color: #0b3b60; 
+  color: #e0f7fa;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+main {
+  max-width: 1000px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+
+/* Grid Layout untuk Daftar Catatan */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+h2 {
+  color: #0b3b60;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #64b5f6;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+/* Styling untuk Custom Elements form */
+note-input {
+  display: block;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(11, 59, 96, 0.08);
+  margin-bottom: 40px;
+  border-top: 5px solid #1976d2;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1.5px solid #bbdefb;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  background-color: #fafbfc;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+  background-color: white;
+}
+
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 0.85em;
+  display: block;
+  margin-top: 6px;
+  font-weight: 500;
+}
