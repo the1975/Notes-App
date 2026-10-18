@@ -11,20 +11,40 @@ class NoteItem extends HTMLElement {
     });
 
     this.innerHTML = `
-      <style>
+       <style>
         .card {
           background: white;
-          padding: 20px;
-          border-radius: 8px;
-          box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+          padding: 24px;
+          border-radius: 12px;
+          box-shadow: 0 6px 12px rgba(11, 59, 96, 0.05);
           display: flex;
           flex-direction: column;
           height: 100%;
+          border-left: 5px solid #64b5f6;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .card h3 { margin-bottom: 8px; font-size: 1.2em; color: #2c3e50; }
-        .card p { flex-grow: 1; margin-bottom: 16px; line-height: 1.5; color: #555; }
-        .card small { color: #888; font-size: 0.85em; }
+        .card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 10px 20px rgba(11, 59, 96, 0.1);
+        }
+        .card h3 { 
+          margin-bottom: 12px; 
+          font-size: 1.3em; 
+          color: #0b3b60; 
+        }
+        .card p { 
+          flex-grow: 1; 
+          margin-bottom: 20px; 
+          line-height: 1.6; 
+          color: #455a64; 
+        }
+        .card small { 
+          color: #78909c; 
+          font-size: 0.85em; 
+          font-weight: 500;
+        }
       </style>
+
       <div class="card">
         <h3>${this._note.title}</h3>
         <p>${this._note.body}</p>
