@@ -27,7 +27,7 @@ class NoteInput extends HTMLElement {
     const titleError = this.querySelector('#title-error');
     const bodyError = this.querySelector('#body-error');
 
-    // Realtime Validation (Kriteria Opsional 2)
+    // Validasi Realtime
     titleInput.addEventListener('input', () => {
       if (titleInput.value.length < 3) {
         titleError.innerText = 'Judul minimal harus 3 karakter.';
@@ -48,21 +48,19 @@ class NoteInput extends HTMLElement {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       if (titleInput.value.length >= 3 && bodyInput.value.length >= 5) {
+        
+        // HANYA MENGIRIM TITLE DAN BODY KE API
         const newNote = {
-          id: `notes-${Math.random().toString(36).substr(2, 9)}`,
           title: titleInput.value,
           body: bodyInput.value,
-          createdAt: new Date().toISOString(),
-          archived: false,
         };
 
-        // Mengirim custom event agar main.js bisa menangkap data baru
         this.dispatchEvent(new CustomEvent('note-added', {
           detail: newNote,
           bubbles: true
         }));
 
-        form.reset(); // Kosongkan form setelah submit
+        form.reset();
       }
     });
   }
