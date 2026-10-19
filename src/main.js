@@ -1,4 +1,4 @@
-import './style.css'; // Wajib ada agar CSS dibundel oleh Webpack
+import './style.css';
 import './components/app-bar.js';
 import './components/note-input.js';
 import './components/note-item.js';
@@ -22,12 +22,20 @@ document.addEventListener('DOMContentLoaded', () => {
       showLoading();
       const notes = await NotesApi.getNotes();
       notesContainer.innerHTML = '';
+      
+      // Penanda kalau API berhasil dihubungi tapi catatannya memang kosong
+      if (notes.length === 0) {
+        notesContainer.innerHTML = '<h3 style="text-align:center; color:#6b7280; grid-column: 1 / -1; padding: 40px 0;">Belum ada catatan. Ayo buat catatan barumu!</h3>';
+        return;
+      }
+
       notes.forEach(note => {
         const noteElement = document.createElement('note-item');
         noteElement.note = note;
         notesContainer.appendChild(noteElement);
       });
     } catch (error) {
+      console.error(error);
       showError('Gagal mengambil data catatan dari server.');
     } finally {
       hideLoading();
